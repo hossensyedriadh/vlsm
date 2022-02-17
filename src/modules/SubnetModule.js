@@ -15,8 +15,8 @@ class SubnetModule {
         let sumOfHosts = 0;
 
         for (let i = 0; i < hosts.length; i += 1) {
-            mtHosts[i] = hosts[i] + 2;
-            sumOfHosts += mtHosts[i];
+            mtHosts[i] = Number(hosts[i]) + Number(2);
+            sumOfHosts += Number(mtHosts[i]);
         }
 
         if (sumOfHosts <= AddressingModule.getTotalAddresses(majorNetwork.cidr)) {

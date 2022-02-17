@@ -1,6 +1,5 @@
 import ConversionModule from "./ConversionModule";
 import * as Exceptions from "./Exceptions";
-import {toast} from "react-toastify";
 
 class AddressingModule {
     getNetworkAddress = (host, cidr) => {
@@ -103,7 +102,7 @@ class AddressingModule {
         return this.getDottedDecimalAddress(binaryBroadcastAddress);
     }
 
-    getWildcardAddress = (broadcastAddress) => {
+    getLastHostAddress = (broadcastAddress) => {
         broadcastAddress = String(broadcastAddress);
 
         let dottedDecimalBroadcastAddress = broadcastAddress.split(".");
@@ -159,6 +158,39 @@ class AddressingModule {
         } else {
             throw Exceptions.SUBNET_MASK_EXCEPTION;
         }
+    }
+
+    isSubnetMaskContiguous = (subnetMask) => {
+        subnetMask = String(subnetMask);
+        let splitSubnetMask = subnetMask.split(".");
+
+        let plainSubnetMask = "";
+
+        for (let i = 0; i < splitSubnetMask.length; i += 1) {
+            plainSubnetMask = plainSubnetMask.concat(ConversionModule.toByte(ConversionModule.decToBin(Number(splitSubnetMask[i]))));
+        }
+
+        let cidr1 = 0;
+
+        for (let i = 0; i < plainSubnetMask.length; i += 1) {
+            if (plainSubnetMask.charAt(i) === '1') {
+                cidr1 += 1;
+            }
+
+            if (plainSubnetMask.charAt(i + 1) === '0') {
+                break;
+            }
+        }
+
+        let cidr2 = 0;
+
+        for (let i = 0; i < plainSubnetMask.length; i += 1) {
+            if (plainSubnetMask.charAt(i) === '1') {
+                cidr2 += 1;
+            }
+        }
+
+        return cidr1 === cidr2;
     }
 
     getSubnetMask = (cidr) => {

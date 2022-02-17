@@ -1,0 +1,35 @@
+#main_div {
+    padding: 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#result_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+#buttons_div {
+    text-align: center;
+}
+
+#major_network {
+    text-align: center;
+}
+
+#copyright_div {
+    position: absolute;
+    bottom: 30px;
+}
+
+@media all and (max-width: 960px) {
+    #copyright_div {
+        position: relative;
+        bottom: 0;
+    }
+}
