@@ -43,16 +43,12 @@ class Result extends React.Component {
                         }
                     </div>
                 </div>
+                <br/>
                 <div id='buttons_div'>
                     <span className='ui button' onClick={this.handleGoBackAction}>
                         <i className='left arrow icon'/>
                         Go Back
                     </span>
-                </div>
-                <br/>
-                <div id='copyright_div'>
-                    <p><i className='code icon'/> <a href='https://github.com/hossensyedriadh' rel='noreferrer'
-                                                     target='_blank'>Syed Riadh Hossen</a></p>
                 </div>
             </div>
         );

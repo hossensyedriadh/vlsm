@@ -17,7 +17,7 @@ class Subnet extends React.Component {
         this.setState({
             default_gateway: AddressingModule.getDefaultGateway(this.state.address),
             broadcast_address: AddressingModule.getBroadcastAddress(this.state.address, this.state.cidr),
-            wildcard_address: AddressingModule.getLastHostAddress(AddressingModule.getBroadcastAddress(this.state.address, this.state.cidr)),
+            last_host_address: AddressingModule.getLastHostAddress(AddressingModule.getBroadcastAddress(this.state.address, this.state.cidr)),
             addresses_available: AddressingModule.getAvailableHostAddresses(this.state.cidr)
         });
     }
@@ -34,7 +34,7 @@ class Subnet extends React.Component {
                 <div className='active content'>
                     <p><strong>Default Gateway: </strong>{this.state.default_gateway} | <strong>Broadcast
                         Address: </strong>{this.state.broadcast_address} | <strong>Last Host
-                        Address: </strong> {this.state.wildcard_address}</p>
+                        Address: </strong> {this.state.last_host_address}</p>
                     <p><strong>Available host addresses: </strong>{this.state.addresses_available}</p>
                 </div>
             </div>
