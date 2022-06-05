@@ -19,7 +19,7 @@ class Result extends React.Component {
     }
 
     handleGoBackAction = () => {
-        window.location.replace("/");
+        window.location.replace("/vlsm/");
     }
 
     render() {
